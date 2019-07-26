@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>{{ title }}</h1>
+    <ol>
+	    {% for post_id in posts %}
+	    <hr>
+		    <li>
+			    <div class="w3-container w3-hover-light-grey">
+		    		<a href="{{ url_for('news_post', news_id=post_id) }}">
+		    			<span>
+		    				<!-- <img src="{{ posts[i].image }}" height="50px" width="auto" display="inline-block"> -->
+		    				<h1>{{ posts[post_id].title }}</h1>
+		    			</span>
+		    		</a>
+		    		<h4>Author: {{ posts[post_id].author }}</h4>
+		    		<h5>Date: {{ posts[post_id].date }}</h5>
+		    		<!-- <p>{{ posts[i].body }}</p> -->
+			    </div>
+			    <div>
+			</li>
+	    {% endfor %}
+	</ol>
+{% endblock %}

@@ -1,0 +1,42 @@
+<html>
+  <head>
+	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	  <link rel="stylesheet" type="text/css" href="/static/news.css">
+    <title>Čuješ?!</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Čuješ?!</h1>
+    </header>
+
+    <nav>
+      <div class="w3-bar w3-red w3-xlarge">
+        <a href="{{ url_for('index') }}" class="w3-button">Home</a>
+        <a href="{{ url_for('news') }}" class="w3-button">Vijesti</a>
+        <div class="dropdown">
+        	<button class="dropbtn">Izvođači</button>
+	        <div class="dropdown-content">
+	        	{% for band in bands %}
+	        		<a href="{{ url_for('band_page', band=band) }}" class="w3-button">{{ band }}</a>
+	        	{% endfor %}
+	        </div>
+	    </div>
+      </div>
+    </nav>
+
+		<hr>
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+	      <div class="w3-container w3-orange">
+	        <ul>
+	          {% for message in messages %}
+	          	<li>{{ message }}</li>
+	          {% endfor %}
+	        </ul>
+	      </div>
+		  {% endif %}
+		{% endwith %}
+	{% block content %}{% endblock %}
+	</body>
+</html>
