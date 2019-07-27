@@ -68,7 +68,7 @@ def news():
 
 @app.route('/vijesti/<post_id>')
 def news_post(post_id):
-    post = posts[post_id]
+    post = posts[int(post_id)]
     return render_template("news_post.html",
                            bands=bands,
                            post=post)
@@ -76,7 +76,7 @@ def news_post(post_id):
 
 @app.route('/izvodaci/<band_id>')
 def band_post(band_id):
-    band = bands[band_id]
+    band = bands[int(band_id)]
     return render_template("band_page.html",
                            bands=bands,
                            band=band)

@@ -1,7 +1,6 @@
 <html>
   <head>
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	  <link rel="stylesheet" type="text/css" href="/static/news.css">
     <title>Čuješ?!</title>
   </head>
 
@@ -17,8 +16,8 @@
         <div class="dropdown">
         	<button class="dropbtn">Izvođači</button>
 	        <div class="dropdown-content">
-	        	{% for band in bands %}
-	        		<a href="{{ url_for('band_page', band=band) }}" class="w3-button">{{ band }}</a>
+	        	{% for band_id in bands %}
+	        		<a href="{{ url_for('band_post', band_id=band_id) }}" class="w3-button">{{ bands[band_id].name }}</a>
 	        	{% endfor %}
 	        </div>
 	    </div>
