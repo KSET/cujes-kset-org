@@ -80,3 +80,25 @@ def band_post(band_id):
     return render_template("band_page.html",
                            bands=bands,
                            band=band)
+
+
+@app.route('/info')
+def info():
+    title = "Informacije"
+    info = """Zmija organizira
+sezone bendovi
+tjedno jedan koncert za tri benda
+finale u petom mjesecu
+Prijave do x.y.2020."""
+    contact = {"email": "cujes@kset.org",
+               "facebook": "https://www.facebook.com/cujesKSET/"}
+
+    return render_template("info.html",
+                           title=title,
+                           info=info,
+                           contact=contact)
+
+
+@app.route('/prijavi_se')
+def apply():
+    return "Prijava TODO NAKON BAZE"
