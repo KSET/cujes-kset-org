@@ -1,5 +1,6 @@
 from cujes import cujes_app as app
 from flask import render_template
+from .models import Season, Artist, Post, Application
 
 
 posts = {
