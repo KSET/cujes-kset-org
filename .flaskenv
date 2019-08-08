@@ -1,3 +1,4 @@
+FLASK_ENV=production
 FLASK_APP=cujes.py
 DB_USER=cujes
 DB_PASSWORD=cujes
