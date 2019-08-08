@@ -105,6 +105,7 @@ venv.bak/
 .mypy_cache/
 
 .flaskenv.override
+.flaskenv
 docker-compose-override.yml
 
 .data/db

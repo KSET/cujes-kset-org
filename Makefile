@@ -1,21 +1,26 @@
 FLASK_OVERRIDE_FILE := .flaskenv.override
+FLASK_MAIN_FILE := .flaskenv.main
+FLASK_ENV_FILE := .flaskenv
 
-.PHONY: init down up build $(FLASK_OVERRIDE_FILE)
+.PHONY: init down up build $(FLASK_OVERRIDE_FILE) $(FLASK_ENV_FILE)
 
-init: down $(FLASK_OVERRIDE_FILE) up
+init: restart
 	docker/flask flask db upgrade
 
-down:
+down: $(FLASK_ENV_FILE)
 	docker/compose down
 	sudo chown -R $(USER) .data/db
 
-up:
+up: $(FLASK_ENV_FILE)
 	docker/compose up -d
 
 restart: down up
 
-build:
+build: $(FLASK_ENV_FILE) down
 	docker-compose build
 
 $(FLASK_OVERRIDE_FILE):
 	.scripts/generate_secret_key.sh "$(FLASK_OVERRIDE_FILE)"
+
+$(FLASK_ENV_FILE): $(FLASK_OVERRIDE_FILE)
+	cat "$(FLASK_MAIN_FILE)" "$(FLASK_OVERRIDE_FILE)" > "$(FLASK_ENV_FILE)"

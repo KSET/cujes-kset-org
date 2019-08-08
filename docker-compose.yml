@@ -8,6 +8,8 @@ services:
       dockerfile: .docker/flask/Dockerfile
     depends_on:
       - db
+    env_file:
+      - .flaskenv
 
   db:
     image: postgres:11
