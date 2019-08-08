@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  flask:
+    build:
+      context: .
+      dockerfile: .docker/flask/Dockerfile
+    depends_on:
+      - db
+
+  db:
+    image: postgres:11
+    restart: always
+    environment:
+      POSTGRES_USER: cujes
+      POSTGRES_PASSWORD: cujes
+    volumes:
+      - .data/db:/var/lib/postgresql/data
