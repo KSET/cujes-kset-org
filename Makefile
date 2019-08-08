@@ -7,6 +7,7 @@ init: down build $(FLASK_OVERRIDE_FILE) up
 
 down:
 	docker/compose down
+	sudo chown -R $(USER) .data/db
 
 up:
 	docker/compose up -d
