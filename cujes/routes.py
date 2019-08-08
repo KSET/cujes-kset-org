@@ -2,7 +2,6 @@ from cujes import cujes_app as app
 from flask import render_template
 from .models import Season, Artist, Post, Application
 
-
 posts = {
     1: {
         'title': "Mace",
@@ -23,7 +22,6 @@ posts = {
         'body': "Pimpeki su zakon"
     }
 }
-
 
 bands = {
     1: {
@@ -97,6 +95,7 @@ Prijave do x.y.2020."""
     return render_template("info.html",
                            title=title,
                            info=info,
+                           bands=bands,
                            contact=contact)
 
 
