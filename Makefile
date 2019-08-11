@@ -13,6 +13,10 @@ down: $(FLASK_ENV_FILE)
 up: $(FLASK_ENV_FILE)
 	docker/compose up -d
 
+dev: down
+	docker/compose up -d db
+	docker/compose up flask
+
 restart: down up
 
 build: $(FLASK_ENV_FILE) down
