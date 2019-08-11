@@ -9,7 +9,6 @@ init: restart
 
 down: $(FLASK_ENV_FILE)
 	docker/compose down
-	sudo chown -R $(USER) .data/db
 
 up: $(FLASK_ENV_FILE)
 	docker/compose up -d
